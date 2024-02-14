@@ -23,6 +23,7 @@ def get_title_from_file(file_path):
 
 def update_footer_links(readme_files):
     for i, file_path in enumerate(readme_files):
+        print(f"Updating footer for {file_path}")
         prev_file_title = get_title_from_file(readme_files[i - 1]) if i > 0 else None
         next_file_title = get_title_from_file(readme_files[0]) if i == len(readme_files) - 1 else get_title_from_file(readme_files[i + 1])
 
