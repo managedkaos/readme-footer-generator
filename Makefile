@@ -1,6 +1,6 @@
 APP = $(notdir $(CURDIR))
 TAG = $(shell echo "$$(date +%F)-$$(git rev-parse --short HEAD)")
-DOCKER_REPO = ghcr.io/managekaos
+DOCKER_REPO = ghcr.io/managedkaos
 
 
 help:
