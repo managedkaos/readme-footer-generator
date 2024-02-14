@@ -23,7 +23,8 @@ unittest:
 	python -m unittest --verbose --failfast
 
 build: pip lint
-	docker build -t $(APP):$(TAG) .
+	docker buildx build --platform linux/amd64,linux/arm64 --tag $(APP):$(TAG) .
+
 
 push:
 	docker tag $(APP):$(TAG) $(DOCKER_REPO)/$(APP):latest
