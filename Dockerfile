@@ -6,8 +6,8 @@ FROM python:alpine3.16
 WORKDIR /usr/src/app
 
 # Copy the script into the container at /usr/src/app
-COPY ./script.py .
+COPY . .
 
 # Run the script when the container launches
-ENTRYPOINT ["python", "./script.py"]
+ENTRYPOINT ["python", "/usr/src/app/script.py"]
 
