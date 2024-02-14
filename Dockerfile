@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:alpine3.16
+FROM python:3.9-slim
 
 
 # Set the working directory in the container
@@ -9,5 +9,5 @@ WORKDIR /usr/src/app
 COPY . .
 
 # Run the script when the container launches
-ENTRYPOINT ["python", "/usr/src/app/script.py"]
+ENTRYPOINT ["python", "./script.py"]
 
