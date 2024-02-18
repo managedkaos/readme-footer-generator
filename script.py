@@ -42,7 +42,7 @@ def update_footer_links(readme_files):
             content, _ = re.split(rf'{re.escape(FOOTER_START)}', content, 1)
 
         # Prepare the new footer
-        footer = f"\n${FOOTER_START}\n---\n"
+        footer = f"\n{FOOTER_START}\n---\n"
         links = []
 
         if prev_file_title:
@@ -53,7 +53,7 @@ def update_footer_links(readme_files):
             next_link = os.path.relpath(readme_files[0], os.path.dirname(file_path)) if i == len(readme_files) - 1 else os.path.relpath(readme_files[i + 1], os.path.dirname(file_path))
             links.append(f"[{next_file_title} →]({next_link})")
 
-        footer += " | ".join(links) + "\n<!-- FooterEnd -->\n"
+        footer += " | ".join(links) + f"\n{FOOTER_END}\n"
 
         # Write the updated content with the new footer back to the file
         with open(file_path, 'w', encoding='utf-8') as file:
