@@ -25,6 +25,12 @@ def get_title_from_file(file_path):
     return "README"
 
 
+def content_changed(file_path, new_content):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        old_content = file.read()
+    return old_content.strip() != new_content.strip()
+
+
 def update_footer_links(readme_files):
     for i, file_path in enumerate(readme_files):
 
@@ -55,9 +61,12 @@ def update_footer_links(readme_files):
 
         footer += " | ".join(links) + f"\n{FOOTER_END}\n"
 
-        # Write the updated content with the new footer back to the file
-        with open(file_path, 'w', encoding='utf-8') as file:
-            file.write(content.strip() + footer)
+        new_content = content.strip() + footer
+
+        # Write the updated content with the new footer back to the file only if changes are detected
+        if content_changed(file_path, new_content):
+            with open(file_path, 'w', encoding='utf-8') as file:
+                file.write(new_content)
 
 
 if __name__ == "__main__":
