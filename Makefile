@@ -11,13 +11,17 @@ help:
 	@echo "    build       - build docker container"
 	@echo "    clean       - stop local container, clean up workspace"
 
-pip:
+requirements:
 	pip install --upgrade pip
 	pip install --quiet --upgrade --requirement requirements.txt
 
 lint:
 	flake8 --ignore=E501,E231 *.py
 	pylint --errors-only --disable=C0301 *.py
+	black --diff *.py
+
+black:
+	black *.py
 
 unittest:
 	python -m unittest --verbose --failfast
