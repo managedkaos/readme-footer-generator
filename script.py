@@ -13,7 +13,16 @@ def find_readme_files(root_dir):
         for file in files:
             if file.lower() == "readme.md":
                 path = os.path.join(root, file)
+
+                # Skip any README files that contain the skip marker
+                with open(path, "r", encoding="utf-8") as file:
+                    content = file.read()
+
+                if FOOTER_SKIP in content:
+                    continue
+
                 readme_files.append(path)
+
     readme_files.sort()
     return readme_files
 
