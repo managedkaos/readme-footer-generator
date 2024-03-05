@@ -4,6 +4,7 @@ import re
 
 FOOTER_START = "<!-- FooterStart -->"
 FOOTER_END = "<!-- FooterEnd -->"
+FOOTER_SKIP = "<!-- FooterSkip -->"
 
 
 def find_readme_files(root_dir):
@@ -47,6 +48,9 @@ def update_footer_links(readme_files):
         # Read the file and split its content to remove the existing footer
         with open(file_path, "r", encoding="utf-8") as file:
             content = file.read()
+
+        if FOOTER_SKIP in content:
+            continue
 
         if FOOTER_START in content:
             content, _ = re.split(rf"{re.escape(FOOTER_START)}", content, 1)
