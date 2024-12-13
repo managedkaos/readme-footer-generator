@@ -65,7 +65,7 @@ def update_footer_links(readme_files):
             content, _ = re.split(rf"{re.escape(FOOTER_START)}", content, 1)
 
         # Prepare the new footer
-        footer = f"\n\n\n{FOOTER_START}\n---\n"
+        footer = f"\n\n{FOOTER_START}\n---\n"
         links = []
 
         if prev_file_title:
